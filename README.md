@@ -7,7 +7,7 @@ A nostalgic, functional web music player made using **HTML, CSS, and JavaScript*
 ---
 
 ## 🖼️ Preview  
-<img src="./assets/image.png" alt="Music Player Screenshot" width="800"/>
+![Music Player Screenshot](./assets/Image.png)
 
 ---
 
