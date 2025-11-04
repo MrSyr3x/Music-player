@@ -6,6 +6,16 @@ A nostalgic, functional web music player made using **HTML, CSS, and JavaScript*
 
 ---
 
+## 🖼️ Preview  
+![Music Player Screenshot](./assets/image.png)
+
+---
+
+## 🚀 Live Demo  
+🎧 **[Try It Here](https://mrsyr3x.github.io/Music-player/)**  
+
+---
+
 ## 💡 Highlights
 - 💽 **Retro Windows 98 Theme** — pure nostalgia with pixel borders and skeuomorphic buttons  
 - 🎧 **Audio Playback** — play, pause, seek, and control volume  
