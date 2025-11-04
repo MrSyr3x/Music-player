@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIFIED MENTOR Music Player</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="window" style="width: 380px;">
+    
+    <div class="title-bar">
+        <div class="title-bar-text">Music Player</div>
+        <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="window-body">
+        
+        <div class="song-info-panel"> 
+            <p id="current-title">No Song Loaded</p>
+            <p id="current-artist-album">Click 'Add Song' to begin</p>
+        </div>
+
+        <div class="progress-bar-container inset-deep"> 
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="file-upload-row">
+            <input type="file" id="audio-file-input" accept="audio/*" multiple hidden>
+            <label for="audio-file-input" class="button add-song-btn">➕ Add Song(s)</label>
+            <button id="clear-playlist-btn" class="clear-btn">❌ Clear Playlist</button>
+        </div>
+
+        <div class="control-buttons">
+            <button id="prev-btn" disabled>⏮️ Prev</button>
+            <button id="play-pause-btn" disabled>▶️ Play</button>
+            <button id="next-btn" disabled>Next ⏭️</button>
+        </div>
+        
+        <fieldset class="volume-group">
+            <legend>Volume</legend>
+            <div class="volume-control">
+                <span>🔈</span>
+                <input type="range" id="volume-slider" min="0" max="100" value="75">
+                <span>🔊</span>
+            </div>
+        </fieldset>
+        
+        <fieldset class="playlist-group">
+            <legend>Playlist</legend>
+            <div class="inset playlist-scroll-box">
+                <ul id="playlist">
+                    <li class="empty-message">No songs added. Click 'Add Song(s)' above.</li>
+                </ul>
+            </div>
+        </fieldset>
+
+    </div>
+
+</div>
+
+<audio id="audio-player"></audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>

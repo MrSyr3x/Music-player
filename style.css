@@ -1,0 +1,243 @@
+/*
+ * UNIFIED MENTOR Music Player - Windows 98 Aesthetic Fixes
+ * Focus: Visual consistency, proper 98.css integration, and layout refinement.
+ */
+
+/* Global Reset/Base */
+body {
+    /* Windows 98 desktop color - Teal/Turquoise */
+    background-color: #008080; 
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    /* Aligns to top, as typically a single window wouldn't be vertically centered */
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.window {
+    margin-top: 5vh;
+    box-shadow: 4px 4px 4px black; /* Deeper shadow for retro feel */
+    max-width: 95%; 
+    /* Ensures the main content isn't flush with the window border */
+    padding: 3px; 
+}
+
+/* Song Info Panel Styling */
+/* Use a proper 98.css inset (border) for the display area */
+.song-info-panel {
+    /* Applying the 98.css inset look manually since it's a div */
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C0C0C0 #FFFFFF #FFFFFF #C0C0C0; /* Sunken border */
+    background-color: white; /* Typically white/light gray */
+    padding: 6px;
+    margin-bottom: 10px;
+    min-height: 60px;
+}
+
+#current-title {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-size: 1.1em;
+}
+
+#current-artist-album {
+    margin: 0;
+    font-size: 0.9em;
+    /* Use a slightly darker color for secondary text */
+    color: #333; 
+}
+
+/* Progress Bar Container - CRITICAL AESTHETIC FIX */
+/* Native HTML elements like <progress> look modern. We must style it heavily. */
+.progress-bar-container {
+    /* Mimics the deep sunken look often seen in 98 elements */
+    border-style: solid;
+    border-width: 2px;
+    border-color: #808080 #FFFFFF #FFFFFF #808080; /* Deeper sunken border */
+    padding: 3px; 
+    margin-bottom: 12px;
+    background-color: #C0C0C0; /* Gray background */
+}
+
+/* Targetting the progress bar itself for W98 styling */
+#progress-bar {
+    width: 100%;
+    height: 18px; /* Slightly taller */
+    /* Reset default browser appearance */
+    appearance: none;
+    -webkit-appearance: none;
+    background: white; /* Track background is white */
+    border: none; /* Remove internal border */
+    cursor: pointer;
+}
+
+/* Styling the filled part of the progress bar (The "bar") */
+#progress-bar::-webkit-progress-value {
+    background: #000080; /* Solid Win98 Blue */
+    border: none;
+}
+
+#progress-bar::-moz-progress-bar {
+    background: #000080; /* Solid Win98 Blue */
+    border: none;
+}
+
+/* File Upload Button Row */
+.file-upload-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+/* Ensure the label used for file input visually matches a 98.css button */
+.add-song-btn {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    /* Ensure the button class is working on the label */
+    display: block; 
+    line-height: initial; /* Reset line-height if necessary */
+    padding-top: 5px; /* Adjust padding to match button height */
+    padding-bottom: 5px; /* Adjust padding to match button height */
+}
+
+.clear-btn {
+    font-weight: bold;
+    /* Adjusted width for better balance */
+    width: 40%; 
+}
+
+/* Control Buttons Layout */
+.control-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.control-buttons button {
+    flex-grow: 1;
+    font-weight: bold;
+    /* Use padding to make buttons look chunky */
+    padding: 6px 10px;
+}
+
+/* Volume Control */
+.volume-group {
+    margin-bottom: 15px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Reduce padding/margin inside the fieldset for tighter look */
+    padding: 0 5px; 
+}
+
+/* Slider is another native element to fix */
+#volume-slider {
+    flex-grow: 1;
+    cursor: grab;
+    /* Reset default browser appearance */
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent; /* Track is transparent */
+}
+
+/* Slider Track Styling */
+#volume-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #C0C0C0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #808080 #FFFFFF #FFFFFF #808080; /* Sunken effect for track */
+}
+
+/* Slider Thumb Styling (The handle) */
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 10px;
+    margin-top: -7px; /* Adjust to center vertically on the track */
+    background: #C0C0C0; /* Standard 98.css button/control color */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF; /* Raised button effect */
+    box-shadow: 1px 1px 0px #000000; /* Deep shadow for 3D effect */
+    cursor: grab;
+}
+
+
+/* Playlist Styling */
+.playlist-group {
+    height: 150px;
+    /* Remove padding to make the scroll box feel like it fills the fieldset */
+    padding-bottom: 0;
+}
+
+.playlist-scroll-box {
+    overflow-y: auto;
+    /* Height must be calculated relative to the fieldset's internal space */
+    height: calc(100% - 10px); 
+    box-sizing: border-box;
+    padding: 2px;
+    background-color: white; 
+}
+
+#playlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#playlist li {
+    padding: 3px 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Remove the default transparent border to prevent layout shifts */
+    border: none; 
+}
+
+/* Visual feedback for selected/active song - W98 Selection Blue */
+#playlist li:hover:not(.active):not(.empty-message) {
+    background-color: #C0C0C0; 
+}
+
+/* The selected item should look sunken/pressed */
+#playlist li.active {
+    background-color: #000080; 
+    color: white;
+    /* Use a proper inverted border for the selected item (like a focus ring) */
+    border: 1px dotted white; 
+    /* Ensures list item selection fully covers the background */
+    padding: 2px 4px; 
+}
+
+.empty-message {
+    color: #818181; 
+    text-align: center;
+    padding-top: 5px !important;
+    cursor: default !important;
+}
+
+/* Standard W98 button font consistency */
+.control-buttons button,
+.file-upload-row .button,
+#clear-playlist-btn {
+    font-family: 'Pixelated MS Sans Serif', 'MS Sans Serif', 'Arial', sans-serif;
+    color: black;
+    /* Ensure the browser uses the color version of emojis */
+    line-height: 1.2; 
+}
+
+/* Audio Player is hidden, but make sure it has no footprint */
+#audio-player {
+    display: none;
+}
