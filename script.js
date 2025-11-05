@@ -31,17 +31,17 @@ function loadSong(index) {
     if (index >= 0 && index < playlist.length) {
         currentSongIndex = index;
         const file = playlist[currentSongIndex];
-        
+
         // Use URL.createObjectURL() to make the local file playable by the <audio> element
         const audioURL = URL.createObjectURL(file);
         audioPlayer.src = audioURL;
         audioPlayer.load(); // Load the new file
-        
+
         // Update Song Information Display
         currentTitleEl.textContent = file.name;
         // NOTE: File API does not easily get metadata (Artist/Album). We use a placeholder.
         currentArtistAlbumEl.textContent = "Local File - Unknown Metadata";
-        
+
         // Update Playlist UI
         updatePlaylistUI();
 
@@ -123,12 +123,12 @@ function clearPlaylist() {
     // Pause playback
     audioPlayer.pause();
     isPlaying = false;
-    
+
     // Clear audio source and reset controls
     audioPlayer.src = '';
     currentSongIndex = -1;
     playlist = [];
-    
+
     // Update UI
     renderPlaylist();
     currentTitleEl.textContent = "No Song Loaded";
@@ -143,7 +143,7 @@ function clearPlaylist() {
 // Populate the Playlist UI
 function renderPlaylist() {
     playlistEl.innerHTML = ''; // Clear existing list
-    
+
     if (playlist.length === 0) {
         const li = document.createElement('li');
         li.classList.add('empty-message');
@@ -156,13 +156,13 @@ function renderPlaylist() {
         const li = document.createElement('li');
         li.textContent = `${index + 1}. ${file.name}`;
         li.dataset.index = index;
-        
+
         // Add click listener to load and play song
         li.addEventListener('click', () => {
             loadSong(index);
             playSong();
         });
-        
+
         playlistEl.appendChild(li);
     });
     updatePlaylistUI();
@@ -208,7 +208,7 @@ audioPlayer.addEventListener('timeupdate', () => {
         const currentTime = audioPlayer.currentTime;
         const duration = audioPlayer.duration;
         const progressPercentage = (currentTime / duration) * 100;
-        
+
         progressBar.value = progressPercentage;
     }
 });
@@ -221,7 +221,7 @@ progressBar.addEventListener('click', (e) => {
         const clickX = e.clientX - rect.left;
         const clickPosition = (clickX / rect.width); // 0.0 to 1.0
         const newTime = clickPosition * audioPlayer.duration;
-        
+
         // Set the new time for the audio player (Fulfills seek requirement)
         audioPlayer.currentTime = newTime;
     }
@@ -235,7 +235,7 @@ audioPlayer.addEventListener('ended', nextSong);
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Render the initial empty playlist
     renderPlaylist();
-    
+
     // 2. Set initial volume based on the slider
     audioPlayer.volume = volumeSlider.value / 100;
 

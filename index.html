@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-    
+
     <link rel="stylesheet" href="https://unpkg.com/98.css">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="window" style="width: 380px;">
-    
+<div class="window" style="width: 680px;">
+
     <div class="title-bar">
-        <div class="title-bar-text">Music Player</div>
+        <div class="title-bar-text">🎵 Music Player</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
@@ -23,10 +23,10 @@
     </div>
 
     <div class="window-body">
-        
+
         <div class="song-info-panel"> 
             <p id="current-title">No Song Loaded</p>
-            <p id="current-artist-album">Click 'Add Song' to begin</p>
+            <p id="current-artist-album">Click 'Add Song(s)' to begin</p>
         </div>
 
         <div class="progress-bar-container inset-deep"> 
@@ -44,7 +44,7 @@
             <button id="play-pause-btn" disabled>▶️ Play</button>
             <button id="next-btn" disabled>Next ⏭️</button>
         </div>
-        
+
         <fieldset class="volume-group">
             <legend>Volume</legend>
             <div class="volume-control">
@@ -53,7 +53,7 @@
                 <span>🔊</span>
             </div>
         </fieldset>
-        
+
         <fieldset class="playlist-group">
             <legend>Playlist</legend>
             <div class="inset playlist-scroll-box">
@@ -68,7 +68,7 @@
 </div>
 
 <audio id="audio-player"></audio>
-
+''
 <script src="script.js"></script>
 
 </body>
